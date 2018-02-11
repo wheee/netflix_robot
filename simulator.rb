@@ -7,15 +7,28 @@ class Simulator
     Robot.new(grid)
   end
 
-  def self.run
-    grid = Grid.new(5, 5)
+  SIMULATION_1 = {
+    grid_size_x: 5,
+    grid_size_y: 5,
+    commands: [
+      { action: :place, params: [1, 2, :east] },
+      { action: :move },
+      { action: :move },
+      { action: :left },
+      { action: :move },
+      { action: :report }
+    ]
+  }
+
+  def self.run(simulation_parameters=SIMULATION_1)
+    grid = Grid.new\
+      simulation_parameters[:grid_size_x],
+      simulation_parameters[:grid_size_y]
     robot = Robot.new(grid)
-    robot.place(1, 2, :east)
-    robot.move
-    robot.move
-    robot.left
-    robot.move
-    robot.report
+
+    simulation_parameters[:commands].each do |command|
+      robot.send(command[:action], *command[:params])
+    end
 
     robot
   end
