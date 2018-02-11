@@ -178,7 +178,9 @@ describe Robot do
 
         x, y, direction = robot.report
 
-        verify(robot, 1, 2, :west)
+        expect(x).to eq(1)
+        expect(y).to eq(2)
+        expect(direction).to eq(:west)
       end
     end
   end

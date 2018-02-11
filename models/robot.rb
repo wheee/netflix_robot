@@ -56,7 +56,6 @@ class Robot
   def report
     return unless placed_on_grid?
 
-    puts "#{x},#{y},#{direction}"
     [x, y, direction]
   end
 

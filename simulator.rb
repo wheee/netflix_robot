@@ -2,8 +2,8 @@ require './models/grid.rb'
 require './models/robot.rb'
 
 class Simulator
-  def self.create(grid_max_x, grid_max_y)
-    grid = Grid.new(grid_max_x, grid_max_y)
+  def self.create(grid_size_x, grid_size_y)
+    grid = Grid.new(grid_size_x, grid_size_y)
     Robot.new(grid)
   end
 
